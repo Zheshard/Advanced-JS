@@ -30,3 +30,38 @@
 //     - Клиент Алексей заказал: Пиццу "Пепперони" и Тирамису.
 //     - Клиент Мария заказала: Суши "Калифорния" и Пиццу "Маргарита".
 //     - Клиент Ирина заказала: Чизкейк.
+
+// Map для хранения блюд и их поваров
+const chefsAndDishes = new Map();
+chefsAndDishes.set("Пицца 'Маргарита'", "Виктор");
+chefsAndDishes.set("Пицца 'Пепперони'", "Виктор");
+chefsAndDishes.set("Суши 'Филадельфия'", "Ольга");
+chefsAndDishes.set("Суши 'Калифорния'", "Ольга");
+chefsAndDishes.set("Тирамису", "Дмитрий");
+chefsAndDishes.set("Чизкейк", "Дмитрий");
+
+// Map для хранения заказов каждого клиента
+const customerOrders = new Map();
+customerOrders.set("Алексей", ["Пицца 'Пепперони'", "Тирамису"]);
+customerOrders.set("Мария", ["Суши 'Калифорния'", "Пицца 'Маргарита'"]);
+customerOrders.set("Ирина", ["Чизкейк"]);
+//console.log(customerOrders);
+
+// Функция для отслеживания, какой повар какое блюдо готовит
+function trackChefForDish(dish) {
+    return chefsAndDishes.get(dish);
+}
+
+function processOrders() {
+    let serialNumber = 0;
+    customerOrders.forEach((orders, client) => {
+        let message = `${++serialNumber}. Клиент ${client} заказал:`;
+        orders.forEach((dish) => {
+            const chef = trackChefForDish(dish);
+            message += ` ${dish} (повар ${chef}) |`;
+        });
+        console.log(message);
+    });
+}
+
+processOrders();
