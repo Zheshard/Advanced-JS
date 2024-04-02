@@ -20,3 +20,49 @@
 
 // Реализуйте конструктор, который принимает начальный список книг (массив) в качестве аргумента.
 // Убедитесь, что предоставленный массив не содержит дубликатов; в противном случае выбрасывайте ошибку.
+
+class Library {
+    #books = [];
+
+    get allBooks() {
+        return this.#books;
+    }
+
+    addBook(title) {
+        try {
+            if (this.#books.includes(title)) {
+                throw new Error(`Книга ${title} уже добавлена в библиотеку`);
+            }
+            this.#books.push(title);
+            console.log(`Книга ${title} добавлена в библиотеку`);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    removeBook(title) {
+        try {
+            if (!this.#books.includes(title)) {
+                throw new Error(`Книга ${title} отсутствует в библиотеке`);
+            }
+            this.#books.splice(this.#books.indexOf(title), 1);
+            console.log(`Книга ${title} удалена из библиотеки`);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+const library = new Library();
+
+library.addBook("Книга 1");
+library.addBook("Книга 1");
+library.addBook("Книга 2");
+library.addBook("Книга 3");
+library.addBook("Книга 4");
+console.log(library.allBooks);
+
+library.removeBook("Книга 4");
+library.removeBook("Книга 44");
+
+console.log(library.allBooks);
