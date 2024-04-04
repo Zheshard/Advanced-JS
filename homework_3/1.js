@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 li.textContent = review;
                 // Добавление кнопки удаления
                 const removeBtn = document.createElement('button');
-                element.setAttribute("id", "newElementId");
+                // element.setAttribute("id", "newElementId");
                 removeBtn.textContent = 'Удалить отзыв';
                 li.appendChild(removeBtn);
                 ul.appendChild(li);
