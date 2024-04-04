@@ -1,0 +1,21 @@
+.container {
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.addingReview, .displayReviews {
+    padding: 30px;
+    border: 1px solid #d7d5d5;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+}
+
+.reviewInput {
+    resize: none; 
+    margin-top: 50px;
+}
